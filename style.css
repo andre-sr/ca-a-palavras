@@ -32,4 +32,16 @@ td:hover {
 footer {
     color: rgba(155, 169, 169, 0.959);
     margin-top: 12vw;
+    text-align: center;
 }
+
+footer a {
+    
+    text-decoration: none;
+    color: inherit;
+}
+
+footer a:hover {
+    transition: 200ms;
+    color: rgba(144, 193, 193, 0.959);;
+} 
