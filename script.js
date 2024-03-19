@@ -80,11 +80,10 @@ function attTable() {
             let cellElement = document.querySelector(`#r${idRow}-c${idColumn}`)
             let tableValue = tableRepresentation[idRow][idColumn]
 
-            if (cellElement.textContent != tableValue) {
-                
+            if (tableSolution[idRow][idColumn] === tableValue) {
                 cellElement.style.background = 'green'
-                cellElement.textContent = tableValue
             }
+            cellElement.textContent = tableValue 
             idColumn++       
         }
         idRow++
@@ -129,11 +128,15 @@ function getRandomLetter() {
 }
 
 
-// Criar a logica que colocara as palavras no table. Começar pelas palavras que ficaram na horizontal, dai partir para as palavras na diagonal. Depois criar a lógica que permitira que essas palavras se cruzem. 
+// Criar a logica que colocara as palavras no table. ------------------------
+//Começar pelas palavras que ficaram na horizontal, -------------------------
+// vertical -----------------------------------------------------------------
+// dai partir para as palavras na diagonal. 
+//Depois criar a lógica que permitira que essas palavras se cruzem. ---------
 
 function choseWord() {
     //debugger
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 12; i++) {
         let chosedWordN = Math.floor(Math.random() * wordList.length)
         let chosedWord = wordList[chosedWordN]
         
@@ -147,7 +150,7 @@ function choseWord() {
 }
 
 function horizonWordPlacement() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
         var test = false
         //const chosedWordN = Math.floor(Math.random() * chosedWordList.length)
         const chosedWordString = chosedWordList[i]
@@ -164,7 +167,6 @@ function horizonWordPlacement() {
                         test = false
                     }
                 }
-                
 
                 if (test === true) {
                     for (let i = 0; i < chosedWordString.length; i++) {
@@ -172,20 +174,48 @@ function horizonWordPlacement() {
                     }
                 }
             }
-        }
-        
+        }  
     }
 }
 
+function verticalWordPlacement() {
+    //debugger
+    for (let i = 4; i < 8; i++) {
+        var test = false
+        const chosedWordString = chosedWordList[i]
 
-
-
+        while (test === false) {
+            let rowN = Math.floor(Math.random() * tableRepresentation.length)
+            let columnN = Math.floor(Math.random() * tableRepresentation[rowN].length)
+        
+            if (tableRepresentation.length - rowN >= chosedWordString.length) {
+                test = true
+                for (let i = 0; i < chosedWordString.length; i++) {
+                    if (tableSolution[rowN+i][columnN] !== 0) {
+                        test = false
+                    }
+                    if (tableSolution[rowN+i][columnN] == chosedWordString[i]) {
+                        test = true
+                    }
+                }
+                
+                if (test === true) {
+                    for (let i = 0; i < chosedWordString.length; i++) {
+                        tableSolution[rowN+i][columnN] = chosedWordString[i]
+                    }
+                }
+            }
+        }  
+    }
+}
 
 
 //EVENT
 btnStart.addEventListener('click', () => {
     choseWord()
     horizonWordPlacement()
+    attTableRepresentation()
+    verticalWordPlacement()
     attTableRepresentation()
     attTable()
 })
