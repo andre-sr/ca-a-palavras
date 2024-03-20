@@ -18,12 +18,13 @@ table {
 }
 
 td {
-    width: 1.3em;
-    height: 1.3em;
-    border: 1px solid white;
+    width: 1.4em;
+    height: 1.4em;
+    border: 1px solid rgba(255, 255, 255, 0.047);
     text-align: center;
     align-items: center;
     cursor: pointer;
+    border-radius: 1px; 
 }
 td:hover {
     background-color: rgba(240, 248, 255, 0.215);

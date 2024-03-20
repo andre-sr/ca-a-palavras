@@ -21,25 +21,25 @@ let tableRepresentation = [
     ["$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$"]
   ];
 
-let tableSolution = [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-];
+let tableSolution = [    
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+]
 
-const wordList = ["banana", "carro", "cachorro", "computador", "lua", "bicicleta", "sol", "gato", "livro", "montanha", "chocolate", "elefante", "avião", "jardim", "telefone", "piano", "sorvete", "praia", "foguete", "eletricidade"];
+const wordList = ["banana", "carro", "cachorro", "computador", "lua", "bicicleta", "sol", "gato", "livro", "montanha", "chocolate", "elefante", "avião", "jardim", "telefone", "piano", "sorvete", "praia", "foguete", "eletricidade", "dinossauro", "navio", "chá", "sapato", "cadeira", "escola", "planeta", "microfone", "borboleta", "aranha", "macaco", "tigre", "leão", "bola", "uva", "morango", "pera", "abacaxi", "laranja", "limão", "pêssego", "kiwi", "melancia", "melão", "goiaba", "maçã", "cenoura", "beterraba", "alface"]
 
 const chosedWordList = []
 
@@ -105,7 +105,7 @@ function attTableRepresentation() {
            // let tableRepresentationValue = tableRepresentation[idRow][idColumn]
             let cellElement = document.querySelector(`#r${idRow}-c${idColumn}`)
 
-            if (tableSolutionValue !== 0) {
+            if (tableSolutionValue !== '0') {
                 
                 //cellElement.style.background = 'green'
                 tableRepresentation[idRow][idColumn] = tableSolutionValue
@@ -129,10 +129,15 @@ function getRandomLetter() {
 
 
 // Criar a logica que colocara as palavras no table. ------------------------
-//Começar pelas palavras que ficaram na horizontal, -------------------------
+// Começar pelas palavras que ficaram na horizontal, ------------------------
 // vertical -----------------------------------------------------------------
 // dai partir para as palavras na diagonal. 
-//Depois criar a lógica que permitira que essas palavras se cruzem. ---------
+// Depois criar a lógica que permitira que essas palavras se cruzem. --------
+// Pensar em como funcionar a logica de selecionar a palavra
+// Criar está lógica
+// criar os testes
+
+
 
 function choseWord() {
     //debugger
@@ -163,7 +168,7 @@ function horizonWordPlacement() {
             if (tableRepresentation.length - columnN >= chosedWordString.length) {
                 test = true
                 for (let i = 0; i < chosedWordString.length + 1; i++) {
-                    if (tableSolution[rowN][columnN+i] !== 0) {
+                    if (tableSolution[rowN][columnN+i] !== '0') {
                         test = false
                     }
                 }
@@ -179,7 +184,6 @@ function horizonWordPlacement() {
 }
 
 function verticalWordPlacement() {
-    //debugger
     for (let i = 4; i < 8; i++) {
         var test = false
         const chosedWordString = chosedWordList[i]
@@ -191,7 +195,7 @@ function verticalWordPlacement() {
             if (tableRepresentation.length - rowN >= chosedWordString.length) {
                 test = true
                 for (let i = 0; i < chosedWordString.length; i++) {
-                    if (tableSolution[rowN+i][columnN] !== 0) {
+                    if (tableSolution[rowN+i][columnN] !== '0') {
                         test = false
                     }
                     if (tableSolution[rowN+i][columnN] == chosedWordString[i]) {
@@ -209,6 +213,65 @@ function verticalWordPlacement() {
     }
 }
 
+function diagonal1WordPlacement () {
+    for (let i = 8; i < 10; i++) {
+        var test = false
+        const chosedWordString = chosedWordList[i]
+
+        while (test === false) {
+            let rowN = Math.floor(Math.random() * tableRepresentation.length)
+            let columnN = Math.floor(Math.random() * tableRepresentation[rowN].length)
+        
+            if (tableRepresentation.length - rowN >= chosedWordString.length) {
+                test = true
+                for (let i = 0; i < chosedWordString.length; i++) {
+                    if (tableSolution[rowN+i][columnN+i] !== '0') {
+                        test = false
+                    }
+                    if (tableSolution[rowN+i][columnN+i] == chosedWordString[i]) {
+                        test = true
+                    }
+                }
+                
+                if (test === true) {
+                    for (let i = 0; i < chosedWordString.length; i++) {
+                        tableSolution[rowN+i][columnN+i] = chosedWordString[i]
+                    }
+                }
+            }
+        }  
+    }
+}
+
+function diagonal2WordPlacement () {
+    for (let i = 10; i < 12; i++) {
+        var test = false
+        const chosedWordString = chosedWordList[i]
+
+        while (test === false) {
+            let rowN = Math.floor(Math.random() * tableRepresentation.length)
+            let columnN = Math.floor(Math.random() * tableRepresentation[rowN].length)
+        
+            if (tableRepresentation.length - rowN >= chosedWordString.length) {
+                test = true
+                for (let i = 0; i < chosedWordString.length; i++) {
+                    if (tableSolution[rowN+i][columnN+i] !== '0') {
+                        test = false
+                    }
+                    if (tableSolution[rowN+i][columnN+i] == chosedWordString[i]) {
+                        test = true
+                    }
+                }
+                
+                if (test === true) {
+                    for (let i = 0; i < chosedWordString.length; i++) {
+                        tableSolution[rowN+i][columnN+i] = chosedWordString[i]
+                    }
+                }
+            }
+        }  
+    }
+}
 
 //EVENT
 btnStart.addEventListener('click', () => {
@@ -216,6 +279,10 @@ btnStart.addEventListener('click', () => {
     horizonWordPlacement()
     attTableRepresentation()
     verticalWordPlacement()
+    attTableRepresentation()
+    diagonal1WordPlacement()
+    attTableRepresentation()
+    diagonal2WordPlacement()
     attTableRepresentation()
     attTable()
 })
