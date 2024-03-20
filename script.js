@@ -81,7 +81,7 @@ function attTable() {
             let tableValue = tableRepresentation[idRow][idColumn]
 
             if (tableSolution[idRow][idColumn] === tableValue) {
-                cellElement.style.background = 'green'
+                //cellElement.style.background = 'green'
             }
             cellElement.textContent = tableValue 
             idColumn++       
@@ -273,6 +273,30 @@ function diagonal2WordPlacement () {
     }
 }
 
+function addEventListenerCreator() {
+    let idRow = 0
+    let idColumn = 0
+    
+    for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 15; i++) {
+            const cell  = document.querySelector(`#r${idRow}-c${idColumn}`)
+            cell.addEventListener('click', (e) => {
+                if (clickCount == 1) {
+                    firstClick(e)
+                    
+                } else {
+                    secondClick(e) 
+                    console.log(e)                
+                }
+            })
+            
+            idColumn++
+        }
+        idRow++
+        idColumn = 0
+    }
+}
+
 //EVENT
 btnStart.addEventListener('click', () => {
     choseWord()
@@ -285,6 +309,8 @@ btnStart.addEventListener('click', () => {
     diagonal2WordPlacement()
     attTableRepresentation()
     attTable()
+
+    addEventListenerCreator()
 })
 
 tableContainer.append(createTable())
