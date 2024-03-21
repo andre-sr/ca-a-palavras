@@ -285,8 +285,7 @@ function addEventListenerCreator() {
                     firstClick(e)
                     
                 } else {
-                    secondClick(e) 
-                    console.log(e)                
+                    secondClick(e)                 
                 }
             })
             
