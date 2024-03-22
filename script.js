@@ -107,7 +107,7 @@ function attTableRepresentation() {
 
             if (tableSolutionValue !== '0') {
                 
-                //cellElement.style.background = 'green'
+                cellElement.style.background = 'green'
                 tableRepresentation[idRow][idColumn] = tableSolutionValue
             } else {
                 tableRepresentation[idRow][idColumn] =  `${getRandomLetter()}`

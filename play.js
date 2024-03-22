@@ -14,7 +14,7 @@ function firstClick(e) {
     let numberId = stringId.match(/\d+/g)
     firstRow = parseInt(numberId[0])
     firstColumn = parseInt(numberId[1])
-    console.log(firstRow, firstColumn)
+    //console.log(firstRow, firstColumn)
     //console.log(clickCount)
     clickCount = 2
 }
@@ -24,7 +24,7 @@ function secondClick(e) {
     let numberId = stringId.match(/\d+/g)
     secondRow = parseInt(numberId[0])
     secondColumn = parseInt(numberId[1])
-    console.log(secondRow, secondColumn)
+    //console.log(secondRow, secondColumn)
     //console.log(clickCount)
     clickCount = 1
 
@@ -45,6 +45,11 @@ function horizontalCheck() {
     if (firstRow == secondRow) {
         console.log('A string está na horizontal')
         wordString = ''
+        if (firstColumn > secondColumn) {
+            let temp = firstColumn
+            firstColumn = secondColumn
+            secondColumn = temp 
+        }
         for (let i = firstColumn; i <= secondColumn; i++) {
             wordString = wordString + tableRepresentation[firstRow][i]
         }
@@ -56,18 +61,50 @@ function horizontalCheck() {
 function verticalCheck() {
     if (firstColumn == secondColumn) {
         console.log('A string está na vertical')
+        wordString = ''
+        if (firstRow > secondRow) {
+            let temp = firstRow
+            firstRow = secondRow
+            secondRow = temp 
+        }
+        for (let i = firstRow; i <= secondRow; i++) {
+            wordString = wordString + tableRepresentation[i][firstColumn]
+        }
+        console.log(wordString)
     }
 }
 
 function diagonalCheck() {
     if ( Math.abs(firstRow - secondRow) <= 1 === Math.abs(firstColumn - secondColumn) <= 1) {
         console.log('os valores são adjacentes')
-        //return true
+        wordString = ''
+        let cont = 0
+        if (firstRow > secondRow || firstColumn > secondColumn) {
+            let temp = firstRow
+            firstRow = secondRow
+            secondRow = temp 
+
+            temp = firstColumn
+            firstColumn = secondColumn
+            secondColumn = temp
+
+        }
+        for (let i = firstRow; i <= secondRow; i++) {
+            wordString = wordString + tableRepresentation[i][firstColumn+cont]
+            cont = cont + 1
+        }
+        console.log(wordString)
     } else {
         console.log('os valores não são adjacentes')
     }
-//Math.abs(row1 - row2) === Math.abs(col1 - col2)
-    //return false
+}
+
+function negativeChange(n1, n2) {
+    if (n1 > n2) {
+        let temp = n1
+        n1 = n2
+        n2 = temp 
+    }
 }
 
 //EVENTOS
