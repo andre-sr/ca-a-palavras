@@ -12,10 +12,16 @@ header {
     padding: 1em;
 }
 
+.table-container {
+
+}
+
 table {
     font-size: 1.3em;
     font-weight: 600;
 }
+
+
 
 td {
     width: 1.4em;
@@ -26,6 +32,7 @@ td {
     cursor: pointer;
     border-radius: 1px; 
 }
+
 td:hover {
     background-color: rgba(240, 248, 255, 0.215);
 }
@@ -46,3 +53,12 @@ footer a:hover {
     transition: 200ms;
     color: rgba(144, 193, 193, 0.959);;
 } 
+
+@keyframes animation {
+    0%, 100% {
+        background-color: rgba(0, 38, 255, 0);
+    }
+    50% {
+        background-color: rgba(255, 0, 0, 0.134);
+    }
+}

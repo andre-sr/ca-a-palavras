@@ -32,9 +32,24 @@ function secondClick(e) {
 }
 
 function getWordString() {
-    horizontalCheck()
-    verticalCheck()
-    diagonalCheck()
+    let word
+    if (word = horizontalCheck()) {
+        console.log(word)
+        if (chosedWordList.includes(word)) {
+            
+        }
+    } else if (word = verticalCheck()) {
+        console.log(word)
+        if (chosedWordList.includes(word)) {
+            
+        }
+    } else if (word = diagonalCheck()) {
+        console.log(word)
+        if (chosedWordList.includes(word)) {
+            
+        }
+    } 
+    
 }
 
 function betweenPoints() {
@@ -53,9 +68,9 @@ function horizontalCheck() {
         for (let i = firstColumn; i <= secondColumn; i++) {
             wordString = wordString + tableRepresentation[firstRow][i]
         }
-        console.log(wordString)
-        
+        return wordString
     }
+    return null
 }
 
 function verticalCheck() {
@@ -70,8 +85,10 @@ function verticalCheck() {
         for (let i = firstRow; i <= secondRow; i++) {
             wordString = wordString + tableRepresentation[i][firstColumn]
         }
-        console.log(wordString)
+        //console.log(wordString)
+        return wordString
     }
+    return null
 }
 
 function diagonalCheck() {
@@ -93,10 +110,16 @@ function diagonalCheck() {
             wordString = wordString + tableRepresentation[i][firstColumn+cont]
             cont = cont + 1
         }
-        console.log(wordString)
-    } else {
-        console.log('os valores não são adjacentes')
-    }
+        return wordString
+    } 
+    
+    console.log('os valores não são adjacentes')
+    wrongAnimation()
+    return null
+}
+
+function wrongAnimation() {
+    tableContainer.style.animation = 'animation 1s'
 }
 
 function negativeChange(n1, n2) {
