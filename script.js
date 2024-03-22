@@ -103,7 +103,7 @@ function attTableRepresentation() {
             let cellElement = document.querySelector(`#r${idRow}-c${idColumn}`)
 
             if (tableSolutionValue !== '0') {
-                cellElement.style.background = 'green'
+                //cellElement.style.background = 'green'
                 tableRepresentation[idRow][idColumn] = tableSolutionValue
             } else {
                 tableRepresentation[idRow][idColumn] =  `${getRandomLetter()}`

@@ -36,17 +36,28 @@ function getWordString() {
     if (word = horizontalCheck()) {
         console.log(word)
         if (chosedWordList.includes(word)) {
-            
+            for (let i = firstColumn; i <= secondColumn; i++) {
+                const cell = document.querySelector(`#r${firstRow}-c${i}`)
+                cell.classList.add('green-cell')
+            }
         }
     } else if (word = verticalCheck()) {
         console.log(word)
         if (chosedWordList.includes(word)) {
-            
+            for (let i = firstRow; i <= secondRow; i++) {
+                const cell = document.querySelector(`#r${i}-c${firstColumn}`)
+                cell.classList.add('green-cell')
+            }
         }
     } else if (word = diagonalCheck()) {
         console.log(word)
         if (chosedWordList.includes(word)) {
-            
+            let cont = 0 
+            for (let i = firstRow; i <= secondRow; i++) {
+                const cell = document.querySelector(`#r${i}-c${firstColumn+cont}`)
+                cell.classList.add('green-cell')
+                cont = cont + 1
+            }
         }
     } 
     
