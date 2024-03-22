@@ -6,6 +6,8 @@ let firstColumn
 let secondRow
 let secondColumn
 
+let wordString
+
 //FUNCOES
 function firstClick(e) {
     let stringId = e.srcElement.id
@@ -30,8 +32,9 @@ function secondClick(e) {
 }
 
 function getWordString() {
-    
-    
+    horizontalCheck()
+    verticalCheck()
+    diagonalCheck()
 }
 
 function betweenPoints() {
@@ -39,17 +42,31 @@ function betweenPoints() {
 }
 
 function horizontalCheck() {
-    
+    if (firstRow == secondRow) {
+        console.log('A string está na horizontal')
+        wordString = ''
+        for (let i = firstColumn; i <= secondColumn; i++) {
+            wordString = wordString + tableRepresentation[firstRow][i]
+        }
+        console.log(wordString)
+        
+    }
 }
 
-function adjacent() {
-    if ( Math.abs(firstRow - secondRow) <= 1 && Math.abs(firstColumn - secondColumn) <= 1) {
+function verticalCheck() {
+    if (firstColumn == secondColumn) {
+        console.log('A string está na vertical')
+    }
+}
+
+function diagonalCheck() {
+    if ( Math.abs(firstRow - secondRow) <= 1 === Math.abs(firstColumn - secondColumn) <= 1) {
         console.log('os valores são adjacentes')
         //return true
     } else {
         console.log('os valores não são adjacentes')
     }
-
+//Math.abs(row1 - row2) === Math.abs(col1 - col2)
     //return false
 }
 
