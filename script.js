@@ -91,8 +91,6 @@ function attTable() {
     }
 }
 
-//tableRepresentation[idRow][idColumn] =  `${getRandomLetter()}`
-            //cell.textContent = `${tableRepresentation[idRow][idColumn]}`
 
 function attTableRepresentation() {
     let idRow = 0
@@ -102,11 +100,9 @@ function attTableRepresentation() {
         for (let i = 0; i < 15; i++) {
             //debugger
             let tableSolutionValue = tableSolution[idRow][idColumn]
-           // let tableRepresentationValue = tableRepresentation[idRow][idColumn]
             let cellElement = document.querySelector(`#r${idRow}-c${idColumn}`)
 
             if (tableSolutionValue !== '0') {
-                
                 cellElement.style.background = 'green'
                 tableRepresentation[idRow][idColumn] = tableSolutionValue
             } else {
@@ -131,11 +127,12 @@ function getRandomLetter() {
 // Criar a logica que colocara as palavras no table. ------------------------
 // Começar pelas palavras que ficaram na horizontal, ------------------------
 // vertical -----------------------------------------------------------------
-// dai partir para as palavras na diagonal. 
+// dai partir para as palavras na diagonal. ---------------------------------
 // Depois criar a lógica que permitira que essas palavras se cruzem. --------
-// Pensar em como funcionar a logica de selecionar a palavra
-// Criar está lógica
-// criar os testes
+// Pensar em como funcionar a logica de selecionar a palavra ----------------
+// Criar está lógica --------------------------------------------------------
+// criar os testes ----------------------------------------------------------
+// criar logica relacionadas ao user ter escolhido a palavra certa
 
 
 
@@ -157,13 +154,11 @@ function choseWord() {
 function horizonWordPlacement() {
     for (let i = 0; i < 4; i++) {
         var test = false
-        //const chosedWordN = Math.floor(Math.random() * chosedWordList.length)
         const chosedWordString = chosedWordList[i]
 
         while (test === false) {
             let rowN = Math.floor(Math.random() * tableRepresentation.length)
             let columnN = Math.floor(Math.random() * tableRepresentation[rowN].length)
-            //let columnN = Math.floor(Math.random() * tableRepresentation[1].length)
 
             if (tableRepresentation.length - columnN >= chosedWordString.length) {
                 test = true
@@ -214,23 +209,25 @@ function verticalWordPlacement() {
 }
 
 function diagonal1WordPlacement () {
-    for (let i = 8; i < 10; i++) {
+    for (let x = 8; x < 10; x++) {
         var test = false
-        const chosedWordString = chosedWordList[i]
+        const chosedWordString = chosedWordList[x]
 
         while (test === false) {
             let rowN = Math.floor(Math.random() * tableRepresentation.length)
             let columnN = Math.floor(Math.random() * tableRepresentation[rowN].length)
-        
             if (tableRepresentation.length - rowN >= chosedWordString.length) {
                 test = true
                 for (let i = 0; i < chosedWordString.length; i++) {
                     if (tableSolution[rowN+i][columnN+i] !== '0') {
                         test = false
-                    }
-                    if (tableSolution[rowN+i][columnN+i] == chosedWordString[i]) {
+                    } else if (tableSolution[rowN+i][columnN+i] !== chosedWordString[i]) {
+                        //console.log(`Na celula row${rowN+i}, column${columnN+i} os dados foram colocados de forma errada.`)
+                    } 
+
+                    if (tableRepresentation[rowN+i][columnN+i] === chosedWordString[i]) {
                         test = true
-                    }
+                    }   
                 }
                 
                 if (test === true) {
@@ -282,13 +279,11 @@ function addEventListenerCreator() {
             const cell  = document.querySelector(`#r${idRow}-c${idColumn}`)
             cell.addEventListener('click', (e) => {
                 if (clickCount == 1) {
-                    firstClick(e)
-                    
+                    firstClick(e)      
                 } else {
                     secondClick(e)                 
                 }
-            })
-            
+            })    
             idColumn++
         }
         idRow++
@@ -313,5 +308,3 @@ btnStart.addEventListener('click', () => {
 })
 
 tableContainer.append(createTable())
-//choseWord()
-//
