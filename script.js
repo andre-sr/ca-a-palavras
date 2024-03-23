@@ -1,6 +1,7 @@
 //VAR
 const tableContainer = document.querySelector('#table-container')
 const btnStart = document.querySelector('#start')
+const ulElement = document.querySelector('.word-list')
 
 
 let tableRepresentation = [
@@ -291,6 +292,18 @@ function addEventListenerCreator() {
     }
 }
 
+function attWordList() {
+    for (let i = 0; i < chosedWordList.length; i++) {
+
+        li = document.createElement('li')
+        li.textContent = chosedWordList[i]
+        li.classList.add('word')
+        li.id = `word${i}`
+
+        ulElement.append(li)
+    }
+}
+
 //EVENT
 btnStart.addEventListener('click', () => {
     choseWord()
@@ -304,6 +317,7 @@ btnStart.addEventListener('click', () => {
     attTableRepresentation()
     attTable()
 
+    attWordList()
     addEventListenerCreator()
 })
 

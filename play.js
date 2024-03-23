@@ -39,7 +39,10 @@ function getWordString() {
             for (let i = firstColumn; i <= secondColumn; i++) {
                 const cell = document.querySelector(`#r${firstRow}-c${i}`)
                 cell.classList.add('green-cell')
+                
             }
+            let wordOnList = document.querySelector(`#word${chosedWordList.indexOf(word)}`)    
+            wordOnList.classList.add('green-word')
         }
     } else if (word = verticalCheck()) {
         console.log(word)
@@ -48,6 +51,8 @@ function getWordString() {
                 const cell = document.querySelector(`#r${i}-c${firstColumn}`)
                 cell.classList.add('green-cell')
             }
+            let wordOnList = document.querySelector(`#word${chosedWordList.indexOf(word)}`)    
+            wordOnList.classList.add('green-word')
         }
     } else if (word = diagonalCheck()) {
         console.log(word)
@@ -58,6 +63,8 @@ function getWordString() {
                 cell.classList.add('green-cell')
                 cont = cont + 1
             }
+            let wordOnList = document.querySelector(`#word${chosedWordList.indexOf(word)}`)    
+            wordOnList.classList.add('green-word')
         }
     } 
     

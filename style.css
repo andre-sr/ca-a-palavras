@@ -12,8 +12,15 @@ header {
     padding: 1em;
 }
 
-.table-container {
+main {
+    display: flex;
+    justify-content: center;
+}
 
+
+
+.table-container {
+    padding: 0 2em;
 }
 
 table {
@@ -26,7 +33,7 @@ table {
 td {
     width: 1.4em;
     height: 1.4em;
-    border: 1px solid rgba(255, 255, 255, 0.047);
+    border: 1px solid #ffffff0c;
     text-align: center;
     align-items: center;
     cursor: pointer;
@@ -34,21 +41,32 @@ td {
 }
 
 .green-cell {
-    background-color: rgba(0, 128, 0, 0.381);
+    background-color: #00800061;
 }
 
 td:hover {
     background-color: rgba(240, 248, 255, 0.215);
 }
 
+.word {
+    font-size: 1.2em;
+    padding: 2px 0px;
+    margin-top: 3px;
+    border-bottom: 1px solid #ffffff20;
+}
+
+.green-word {
+    border-bottom: 1px solid #0080006e;
+    color: #bfefbf;
+}
+
 footer {
     color: rgba(155, 169, 169, 0.959);
-    margin-top: 12vw;
+    margin-top: 8vw;
     text-align: center;
 }
 
 footer a {
-    
     text-decoration: none;
     color: inherit;
 }
