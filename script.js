@@ -104,7 +104,7 @@ function attTableRepresentation() {
             let cellElement = document.querySelector(`#r${idRow}-c${idColumn}`)
 
             if (tableSolutionValue !== '0') {
-                //cellElement.style.background = 'green'
+                cellElement.style.background = 'green'
                 tableRepresentation[idRow][idColumn] = tableSolutionValue
             } else {
                 tableRepresentation[idRow][idColumn] =  `${getRandomLetter()}`
@@ -183,13 +183,14 @@ function verticalWordPlacement() {
     for (let i = 4; i < 8; i++) {
         var test = false
         const chosedWordString = chosedWordList[i]
-
+        
         while (test === false) {
             let rowN = Math.floor(Math.random() * tableRepresentation.length)
             let columnN = Math.floor(Math.random() * tableRepresentation[rowN].length)
         
             if (tableRepresentation.length - rowN >= chosedWordString.length) {
                 test = true
+                let trueFalse = true
                 for (let i = 0; i < chosedWordString.length; i++) {
                     if (tableSolution[rowN+i][columnN] !== '0') {
                         test = false
@@ -197,13 +198,19 @@ function verticalWordPlacement() {
                     if (tableSolution[rowN+i][columnN] == chosedWordString[i]) {
                         test = true
                     }
+                    if (test === false) {
+                        trueFalse = false
+                    }
+                    test = trueFalse
                 }
+                
                 
                 if (test === true) {
                     for (let i = 0; i < chosedWordString.length; i++) {
                         tableSolution[rowN+i][columnN] = chosedWordString[i]
                     }
                 }
+                console.log('fudeu')
             }
         }  
     }
@@ -219,7 +226,9 @@ function diagonal1WordPlacement () {
             let columnN = Math.floor(Math.random() * tableRepresentation[rowN].length)
             if (tableRepresentation.length - rowN >= chosedWordString.length) {
                 test = true
+                
                 for (let i = 0; i < chosedWordString.length; i++) {
+                    let trueFalse = true
                     if (tableSolution[rowN+i][columnN+i] !== '0') {
                         test = false
                     } else if (tableSolution[rowN+i][columnN+i] !== chosedWordString[i]) {
@@ -228,7 +237,13 @@ function diagonal1WordPlacement () {
 
                     if (tableRepresentation[rowN+i][columnN+i] === chosedWordString[i]) {
                         test = true
+                        
                     }   
+                    if (test === false) {
+                        trueFalse = false
+                    }
+                    test = trueFalse
+                    
                 }
                 
                 if (test === true) {
@@ -236,6 +251,7 @@ function diagonal1WordPlacement () {
                         tableSolution[rowN+i][columnN+i] = chosedWordString[i]
                     }
                 }
+                console.log('fudeu2')
             }
         }  
     }
