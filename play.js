@@ -7,6 +7,8 @@ let secondRow
 let secondColumn
 
 let wordString
+let element
+
 
 //FUNCOES
 function firstClick(e) {
@@ -14,6 +16,8 @@ function firstClick(e) {
     let numberId = stringId.match(/\d+/g)
     firstRow = parseInt(numberId[0])
     firstColumn = parseInt(numberId[1])
+    element = document.querySelector(`#r${firstRow}-c${firstColumn}`)
+    element.classList.add('selected-cell')
     //console.log(firstRow, firstColumn)
     //console.log(clickCount)
     clickCount = 2
@@ -24,6 +28,7 @@ function secondClick(e) {
     let numberId = stringId.match(/\d+/g)
     secondRow = parseInt(numberId[0])
     secondColumn = parseInt(numberId[1])
+    element.classList.remove('selected-cell')
     //console.log(secondRow, secondColumn)
     //console.log(clickCount)
     clickCount = 1

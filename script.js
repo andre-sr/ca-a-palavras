@@ -104,7 +104,7 @@ function attTableRepresentation() {
             let cellElement = document.querySelector(`#r${idRow}-c${idColumn}`)
 
             if (tableSolutionValue !== '0') {
-                cellElement.style.background = 'green'
+                //cellElement.style.background = 'green'
                 tableRepresentation[idRow][idColumn] = tableSolutionValue
             } else {
                 tableRepresentation[idRow][idColumn] =  `${getRandomLetter()}`
@@ -226,9 +226,9 @@ function diagonal1WordPlacement () {
             let columnN = Math.floor(Math.random() * tableRepresentation[rowN].length)
             if (tableRepresentation.length - rowN >= chosedWordString.length) {
                 test = true
-                
+                var trueFalse = true
                 for (let i = 0; i < chosedWordString.length; i++) {
-                    let trueFalse = true
+                    
                     if (tableSolution[rowN+i][columnN+i] !== '0') {
                         test = false
                     } else if (tableSolution[rowN+i][columnN+i] !== chosedWordString[i]) {
@@ -246,7 +246,7 @@ function diagonal1WordPlacement () {
                     
                 }
                 
-                if (test === true) {
+                if (test === true && trueFalse === true) {
                     for (let i = 0; i < chosedWordString.length; i++) {
                         tableSolution[rowN+i][columnN+i] = chosedWordString[i]
                     }
