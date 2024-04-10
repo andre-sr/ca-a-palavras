@@ -4,70 +4,44 @@ const btnStart = document.querySelector('#start')
 const ulElement = document.querySelector('.word-list')
 
 
-let tableRepresentation = [
-    ["$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$"],
-    ["$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$"],
-    ["$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$"],
-    ["$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$"],
-    ["$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$"],
-    ["$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$"],
-    ["$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$"],
-    ["$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$"],
-    ["$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$"],
-    ["$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$"],
-    ["$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$"],
-    ["$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$"],
-    ["$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$"],
-    ["$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$"],
-    ["$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$", "$"]
-  ];
-
-let tableSolution = [    
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
-]
+let tableRepresentation = [];
+let tableSolution = [];
 
 const wordList = ["banana", "carro", "cachorro", "computador", "lua", "bicicleta", "sol", "gato", "livro", "montanha", "chocolate", "elefante", "avião", "jardim", "telefone", "piano", "sorvete", "praia", "foguete", "eletricidade", "dinossauro", "navio", "chá", "sapato", "cadeira", "escola", "planeta", "microfone", "borboleta", "aranha", "macaco", "tigre", "leão", "bola", "uva", "morango", "pera", "abacaxi", "laranja", "limão", "pêssego", "kiwi", "melancia", "melão", "goiaba", "maçã", "cenoura", "beterraba", "alface"]
 
 const chosedWordList = []
 
 //FUNCTION
+
 function createTable() {
+    // est´a função recebera mais responsabilidade, ela criara as arrays para o funcionamento o jogo (tableRepresenntation e tableSolution)
+    tableContainer.innerHTML = ''
+    
     let idRow = 0
     let idColumn = 0
     let table = document.createElement('table')
     
     for (let i = 0; i < 15; i++) {
+        let rowRepresenntation = []
+        let rowSolution = []
+
         const row = document.createElement('tr')
-
-
         for (let i = 0; i < 15; i++) {
+            rowRepresenntation.push('$')
+            rowSolution.push('0')
+
             const cell = document.createElement('td')
             cell.id = `r${idRow}-c${idColumn}`
-            //tableRepresentation[idRow][idColumn] =  `${getRandomLetter()}`
-            //cell.textContent = `${tableRepresentation[idRow][idColumn]}`
             row.append(cell)
             
             idColumn++
         }
+        tableRepresentation.push(rowRepresenntation)
+        tableSolution.push(rowSolution)
         table.append(row)
         idRow++
         idColumn = 0
     }
-
     return table
 }
 
@@ -82,7 +56,7 @@ function attTable() {
             let tableValue = tableRepresentation[idRow][idColumn]
 
             if (tableSolution[idRow][idColumn] === tableValue) {
-                //cellElement.style.background = 'green'
+                cellElement.style.background = 'green'
             }
             cellElement.textContent = tableValue 
             idColumn++       
@@ -123,19 +97,6 @@ function getRandomLetter() {
 
     return randomLetter
 }
-
-
-// Criar a logica que colocara as palavras no table. ------------------------
-// Começar pelas palavras que ficaram na horizontal, ------------------------
-// vertical -----------------------------------------------------------------
-// dai partir para as palavras na diagonal. ---------------------------------
-// Depois criar a lógica que permitira que essas palavras se cruzem. --------
-// Pensar em como funcionar a logica de selecionar a palavra ----------------
-// Criar está lógica --------------------------------------------------------
-// criar os testes ----------------------------------------------------------
-// criar logica relacionadas ao user ter escolhido a palavra certa
-
-
 
 function choseWord() {
     //debugger

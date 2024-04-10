@@ -18,8 +18,6 @@ function firstClick(e) {
     firstColumn = parseInt(numberId[1])
     element = document.querySelector(`#r${firstRow}-c${firstColumn}`)
     element.classList.add('selected-cell')
-    //console.log(firstRow, firstColumn)
-    //console.log(clickCount)
     clickCount = 2
 }
 
@@ -29,8 +27,6 @@ function secondClick(e) {
     secondRow = parseInt(numberId[0])
     secondColumn = parseInt(numberId[1])
     element.classList.remove('selected-cell')
-    //console.log(secondRow, secondColumn)
-    //console.log(clickCount)
     clickCount = 1
 
    getWordString()
@@ -108,7 +104,6 @@ function verticalCheck() {
         for (let i = firstRow; i <= secondRow; i++) {
             wordString = wordString + tableRepresentation[i][firstColumn]
         }
-        //console.log(wordString)
         return wordString
     }
     return null
