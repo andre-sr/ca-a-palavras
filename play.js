@@ -44,6 +44,9 @@ function getWordString() {
             }
             let wordOnList = document.querySelector(`#word${chosedWordList.indexOf(word)}`)    
             wordOnList.classList.add('green-word')
+        } else {
+            wrongAnimation()
+            console.log('WRONG!BEHHH')
         }
     } else if (word = verticalCheck()) {
         console.log(word)
@@ -54,6 +57,9 @@ function getWordString() {
             }
             let wordOnList = document.querySelector(`#word${chosedWordList.indexOf(word)}`)    
             wordOnList.classList.add('green-word')
+        } else {
+            wrongAnimation()
+            console.log('WRONG!BEHHH')
         }
     } else if (word = diagonalCheck()) {
         console.log(word)
@@ -66,8 +72,14 @@ function getWordString() {
             }
             let wordOnList = document.querySelector(`#word${chosedWordList.indexOf(word)}`)    
             wordOnList.classList.add('green-word')
+        } else {
+            wrongAnimation()
+            console.log('WRONG!BEHHH')
         }
-    } 
+    } else {
+        wrongAnimation()
+        console.log('WRONG!BEHHH')
+    }
     
 }
 

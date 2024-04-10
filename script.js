@@ -3,7 +3,8 @@ const tableContainer = document.querySelector('#table-container')
 const btnStart = document.querySelector('#start')
 const ulElement = document.querySelector('.word-list')
 
-
+let tableSizeRow = 18;
+let tableSizeColumn = 18;
 let tableRepresentation = [];
 let tableSolution = [];
 
@@ -11,22 +12,21 @@ const wordList = ["banana", "carro", "cachorro", "computador", "lua", "bicicleta
 
 const chosedWordList = []
 
-//FUNCTION
+//FUNCTIONS
 
 function createTable() {
-    // est´a função recebera mais responsabilidade, ela criara as arrays para o funcionamento o jogo (tableRepresenntation e tableSolution)
     tableContainer.innerHTML = ''
     
     let idRow = 0
     let idColumn = 0
     let table = document.createElement('table')
     
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < tableSizeRow; i++) {
         let rowRepresenntation = []
         let rowSolution = []
 
         const row = document.createElement('tr')
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < tableSizeColumn; i++) {
             rowRepresenntation.push('$')
             rowSolution.push('0')
 
@@ -49,14 +49,14 @@ function attTable() {
     let idRow = 0
     let idColumn = 0
 
-    for (let i = 0; i < 15; i++) {
-        for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < tableSizeRow; i++) {
+        for (let i = 0; i < tableSizeColumn; i++) {
             //debugger
             let cellElement = document.querySelector(`#r${idRow}-c${idColumn}`)
             let tableValue = tableRepresentation[idRow][idColumn]
 
-            if (tableSolution[idRow][idColumn] === tableValue) {
-                cellElement.style.background = 'green'
+            if (tableSolution[idRow][idColumn] === tableValue) { // if usado para debbug (deixa todas as palavras destacadas)
+                //cellElement.style.background = 'blue'
             }
             cellElement.textContent = tableValue 
             idColumn++       
@@ -71,8 +71,8 @@ function attTableRepresentation() {
     let idRow = 0
     let idColumn = 0
 
-    for (let i = 0; i < 15; i++) {
-        for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < tableSizeRow; i++) {
+        for (let i = 0; i < tableSizeColumn; i++) {
             //debugger
             let tableSolutionValue = tableSolution[idRow][idColumn]
             let cellElement = document.querySelector(`#r${idRow}-c${idColumn}`)
@@ -178,7 +178,7 @@ function verticalWordPlacement() {
 }
 
 function diagonal1WordPlacement () {
-    for (let x = 8; x < 10; x++) {
+    for (let x = 8; x < 12; x++) {
         var test = false
         const chosedWordString = chosedWordList[x]
 
@@ -187,7 +187,7 @@ function diagonal1WordPlacement () {
             let columnN = Math.floor(Math.random() * tableRepresentation[rowN].length)
             if (tableRepresentation.length - rowN >= chosedWordString.length) {
                 test = true
-                var trueFalse = true
+                let trueFalse = true
                 for (let i = 0; i < chosedWordString.length; i++) {
                     
                     if (tableSolution[rowN+i][columnN+i] !== '0') {
@@ -252,8 +252,8 @@ function addEventListenerCreator() {
     let idRow = 0
     let idColumn = 0
     
-    for (let i = 0; i < 15; i++) {
-        for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < tableSizeRow; i++) {
+        for (let i = 0; i < tableSizeColumn; i++) {
             const cell  = document.querySelector(`#r${idRow}-c${idColumn}`)
             cell.addEventListener('click', (e) => {
                 if (clickCount == 1) {
@@ -290,8 +290,7 @@ btnStart.addEventListener('click', () => {
     attTableRepresentation()
     diagonal1WordPlacement()
     attTableRepresentation()
-    diagonal2WordPlacement()
-    attTableRepresentation()
+   
     attTable()
 
     attWordList()
