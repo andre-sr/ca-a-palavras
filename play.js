@@ -1,4 +1,5 @@
 //VARIAVEIS
+const modalElement = document.querySelector('.modal')
 
 let clickCount = 1
 let firstRow
@@ -9,6 +10,7 @@ let secondColumn
 let wordString
 let element
 
+let winningCount = 0
 
 //FUNCOES
 function firstClick(e) {
@@ -39,14 +41,11 @@ function getWordString() {
         if (chosedWordList.includes(word)) {
             for (let i = firstColumn; i <= secondColumn; i++) {
                 const cell = document.querySelector(`#r${firstRow}-c${i}`)
-                cell.classList.add('green-cell')
-                
+                cell.classList.add('green-cell')  
             }
             let wordOnList = document.querySelector(`#word${chosedWordList.indexOf(word)}`)    
             wordOnList.classList.add('green-word')
-        } else {
-            wrongAnimation()
-            console.log('WRONG!BEHHH')
+            winningCount = winningCount + 1
         }
     } else if (word = verticalCheck()) {
         console.log(word)
@@ -57,9 +56,7 @@ function getWordString() {
             }
             let wordOnList = document.querySelector(`#word${chosedWordList.indexOf(word)}`)    
             wordOnList.classList.add('green-word')
-        } else {
-            wrongAnimation()
-            console.log('WRONG!BEHHH')
+            winningCount = winningCount + 1
         }
     } else if (word = diagonalCheck()) {
         console.log(word)
@@ -72,13 +69,15 @@ function getWordString() {
             }
             let wordOnList = document.querySelector(`#word${chosedWordList.indexOf(word)}`)    
             wordOnList.classList.add('green-word')
-        } else {
-            wrongAnimation()
-            console.log('WRONG!BEHHH')
+            winningCount = winningCount + 1
         }
     } else {
         wrongAnimation()
         console.log('WRONG!BEHHH')
+    }
+
+    if (winningCount == 12) {
+        modalElement.classList.remove('hidden')
     }
     
 }

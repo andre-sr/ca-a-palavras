@@ -5,6 +5,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 }
 
 header {
@@ -105,6 +106,30 @@ footer a:hover {
     color: rgba(144, 193, 193, 0.959);;
 } 
 
+/* MODAL START */
+.modal {
+    background-color: rgba(0, 0, 0, 0.856);
+    z-index: +2;
+    position: absolute;
+    width: 110vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal .container h1 {
+    margin: 1em;
+}
+
+/* MODAL END */
+
 @keyframes animation {
     0%, 100% {
         background-color: rgba(0, 38, 255, 0);
@@ -112,4 +137,8 @@ footer a:hover {
     50% {
         background-color: rgba(255, 0, 0, 0.134);
     }
+}
+
+.hidden {
+    visibility: hidden;
 }
