@@ -10,7 +10,7 @@ let tableSolution = [];
 
 const wordList = ["banana", "carro", "cachorro", "computador", "lua", "bicicleta", "sol", "gato", "livro", "montanha", "chocolate", "elefante", "avião", "jardim", "telefone", "piano", "sorvete", "praia", "foguete", "eletricidade", "dinossauro", "navio", "chá", "sapato", "cadeira", "escola", "planeta", "microfone", "borboleta", "aranha", "macaco", "tigre", "leão", "bola", "uva", "morango", "pera", "abacaxi", "laranja", "limão", "pêssego", "kiwi", "melancia", "melão", "goiaba", "maçã", "cenoura", "beterraba", "alface"]
 
-const chosedWordList = []
+let chosedWordList = []
 
 //FUNCTIONS
 
@@ -100,6 +100,7 @@ function getRandomLetter() {
 
 function choseWord() {
     //debugger
+    chosedWordList = []
     for (let i = 0; i < 12; i++) {
         let chosedWordN = Math.floor(Math.random() * wordList.length)
         let chosedWord = wordList[chosedWordN]
@@ -270,6 +271,7 @@ function addEventListenerCreator() {
 }
 
 function attWordList() {
+    ulElement.innerHTML = ''
     for (let i = 0; i < chosedWordList.length; i++) {
 
         li = document.createElement('li')

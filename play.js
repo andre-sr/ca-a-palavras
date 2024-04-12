@@ -1,4 +1,5 @@
 //VARIAVEIS
+const btnRestart = document.querySelector('#restart-btn')
 const modalElement = document.querySelector('.modal')
 
 let clickCount = 1
@@ -159,8 +160,30 @@ function negativeChange(n1, n2) {
     }
 }
 
-//EVENTOS
+function restartGame() {
+    tableRepresentation = []
+    tableSolution = []
+    winningCount = 0
+    tableContainer.append(createTable())
+    choseWord()
+    horizonWordPlacement()
+    attTableRepresentation()
+    verticalWordPlacement()
+    attTableRepresentation()
+    diagonal1WordPlacement()
+    attTableRepresentation()
+   
+    attTable()
 
+    attWordList()
+    addEventListenerCreator()
+}
+
+//EVENTOS
+btnRestart.addEventListener('click', () => {
+    modalElement.classList.add('hidden')
+    restartGame()
+})
 
 
 
