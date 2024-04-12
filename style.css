@@ -18,7 +18,7 @@ main {
     justify-content: center;
 }
 
-.container-game-info, .container-word-list {
+.container-game-info, .container-right{
     width: 8em;
 }
 
@@ -88,6 +88,12 @@ td:hover {
 .green-word {
     border-bottom: 1px solid #0080006e;
     color: #bfefbf;
+}
+
+.container-right span {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1em;
 }
 
 footer {

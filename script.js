@@ -300,6 +300,7 @@ btnStart.addEventListener('click', () => {
 
     attWordList()
     addEventListenerCreator()
+    startTimer()
 })
 
 tableContainer.append(createTable())
