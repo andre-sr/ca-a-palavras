@@ -11,6 +11,7 @@ let secondColumn
 let wordString
 let element
 
+let checkedWordList = []
 let winningCount = 0
 
 //FUNCOES
@@ -46,7 +47,7 @@ function getWordString() {
             }
             let wordOnList = document.querySelector(`#word${chosedWordList.indexOf(word)}`)    
             wordOnList.classList.add('green-word')
-            winningCount = winningCount + 1
+            dealWithCount(word) 
         }
     } else if (word = verticalCheck()) {
         console.log(word)
@@ -57,7 +58,7 @@ function getWordString() {
             }
             let wordOnList = document.querySelector(`#word${chosedWordList.indexOf(word)}`)    
             wordOnList.classList.add('green-word')
-            winningCount = winningCount + 1
+            dealWithCount(word) 
         }
     } else if (word = diagonalCheck()) {
         console.log(word)
@@ -70,7 +71,7 @@ function getWordString() {
             }
             let wordOnList = document.querySelector(`#word${chosedWordList.indexOf(word)}`)    
             wordOnList.classList.add('green-word')
-            winningCount = winningCount + 1
+            dealWithCount(word)
         }
     } else {
         wrongAnimation()
@@ -78,7 +79,7 @@ function getWordString() {
     }
 
     if (winningCount == 12) {
-        modalElement.classList.remove('hidden')
+        attModal()
     }
     
 }
@@ -177,6 +178,21 @@ function restartGame() {
 
     attWordList()
     addEventListenerCreator()
+}
+
+function dealWithCount(word) {
+    if (wordCheck(word) == true) {
+        winningCount = winningCount + 1
+        console.log(winningCount)
+    }    
+}
+
+function wordCheck(word) { //função que checa se a palavra já foi selecionada ou não. Sem isso o jogador poderia selecionar varias vezes a mesma palavras e ganhar o jogo facilmente
+    if (checkedWordList.includes(word)) {
+        return false
+    }
+    checkedWordList.push(word)
+    return true
 }
 
 //EVENTOS

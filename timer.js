@@ -1,19 +1,26 @@
 //VARIAVEIS
 const timerElement = document.querySelector('#timer')
+const modalTimerElement = document.querySelector('#modal-time')
 let pastSeconds = 0
-
+let intervalId = null
 
 //FUNCOES
 function timer() {
     pastSeconds += 1
-    console.log(pastSeconds)
     timerElement.innerHTML = `timer: ${pastSeconds}`
 
 }
 
 function startTimer() {
     pastSeconds = 0
-    setInterval(timer, 1000)
+    intervalId = setInterval(timer, 1000)
+}
+
+function attModal() {
+    clearInterval(intervalId)
+    intervalId = null
+    modalElement.classList.remove('hidden')
+    modalTimerElement.textContent = `${pastSeconds}`
 }
 
 function attTimerElement() {}
