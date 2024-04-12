@@ -186,6 +186,7 @@ function diagonal1WordPlacement () {
         while (test === false) {
             let rowN = Math.floor(Math.random() * tableRepresentation.length)
             let columnN = Math.floor(Math.random() * tableRepresentation[rowN].length)
+            let diceRolls = 0
             if (tableRepresentation.length - rowN >= chosedWordString.length) {
                 test = true
                 let trueFalse = true
@@ -213,7 +214,10 @@ function diagonal1WordPlacement () {
                         tableSolution[rowN+i][columnN+i] = chosedWordString[i]
                     }
                 }
-                console.log('fudeu2')
+                diceRolls = diceRolls + 1
+                if (diceRolls >= 50) {
+                    restartGame()
+                }
             }
         }  
     }
@@ -273,7 +277,6 @@ function addEventListenerCreator() {
 function attWordList() {
     ulElement.innerHTML = ''
     for (let i = 0; i < chosedWordList.length; i++) {
-
         li = document.createElement('li')
         li.textContent = chosedWordList[i]
         li.classList.add('word')
