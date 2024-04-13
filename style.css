@@ -20,12 +20,13 @@ main {
 
 .container-game-info, .container-right{
     width: 8em;
+
 }
 
 .container-game-info {
     display: flex;
-    justify-content: end;
-   
+    flex-direction: column;
+    align-items: center;
 }
 
 .container-game-info button {
@@ -90,7 +91,7 @@ td:hover {
     color: #bfefbf;
 }
 
-.container-right span {
+.container-right h1,span {
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     font-size: 1em;

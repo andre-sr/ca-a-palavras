@@ -39,7 +39,6 @@ function secondClick(e) {
 function getWordString() {
     let word
     if (word = horizontalCheck()) {
-        console.log(word)
         if (chosedWordList.includes(word)) {
             for (let i = firstColumn; i <= secondColumn; i++) {
                 const cell = document.querySelector(`#r${firstRow}-c${i}`)
@@ -50,7 +49,6 @@ function getWordString() {
             dealWithCount(word) 
         }
     } else if (word = verticalCheck()) {
-        console.log(word)
         if (chosedWordList.includes(word)) {
             for (let i = firstRow; i <= secondRow; i++) {
                 const cell = document.querySelector(`#r${i}-c${firstColumn}`)
@@ -61,7 +59,6 @@ function getWordString() {
             dealWithCount(word) 
         }
     } else if (word = diagonalCheck()) {
-        console.log(word)
         if (chosedWordList.includes(word)) {
             let cont = 0 
             for (let i = firstRow; i <= secondRow; i++) {
@@ -75,11 +72,10 @@ function getWordString() {
         }
     } else {
         wrongAnimation()
-        console.log('WRONG!BEHHH')
     }
 
     if (winningCount == 12) {
-        attModal()
+        endGame()
     }
     
 }
@@ -90,7 +86,6 @@ function betweenPoints() {
 
 function horizontalCheck() {
     if (firstRow == secondRow) {
-        console.log('A string está na horizontal')
         wordString = ''
         if (firstColumn > secondColumn) {
             let temp = firstColumn
@@ -107,7 +102,6 @@ function horizontalCheck() {
 
 function verticalCheck() {
     if (firstColumn == secondColumn) {
-        console.log('A string está na vertical')
         wordString = ''
         if (firstRow > secondRow) {
             let temp = firstRow
@@ -124,7 +118,6 @@ function verticalCheck() {
 
 function diagonalCheck() {
     if ( Math.abs(firstRow - secondRow) <= 1 === Math.abs(firstColumn - secondColumn) <= 1) {
-        console.log('os valores são adjacentes')
         wordString = ''
         let cont = 0
         if (firstRow > secondRow || firstColumn > secondColumn) {
@@ -144,7 +137,6 @@ function diagonalCheck() {
         return wordString
     } 
     
-    console.log('os valores não são adjacentes')
     wrongAnimation()
     return null
 }
