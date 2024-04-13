@@ -7,14 +7,19 @@ let intervalId = null
 //FUNCOES
 function timer() {
     pastSeconds += 1
-    timerElement.innerHTML = `timer: ${pastSeconds}`
-
+    attTimer()
 }
 
 function startTimer() {
     pastSeconds = 0
     intervalId = setInterval(timer, 1000)
-    timerElement.innerHTML = `timer: ${pastSeconds}`
+    attTimer()
+}
+
+function attTimer() {
+    const time = new Date (pastSeconds*1000)
+    const formatedTime = time.toLocaleString('pt-br', {minute: '2-digit', second: '2-digit'})
+    timerElement.innerHTML = `timer: ${formatedTime}`
 }
 
 function attModal() {
@@ -24,6 +29,6 @@ function attModal() {
     modalTimerElement.textContent = `${pastSeconds}`
 }
 
-function attTimerElement() {}
+//Criar as lógicas que lidam com o local storage. Permitindo que os tempos dos jogos realizados fiquem guardados no navegador
 
 //EVENTOS
