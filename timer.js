@@ -14,6 +14,7 @@ function timer() {
 function startTimer() {
     pastSeconds = 0
     intervalId = setInterval(timer, 1000)
+    timerElement.innerHTML = `timer: ${pastSeconds}`
 }
 
 function attModal() {

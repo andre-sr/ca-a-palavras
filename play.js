@@ -162,10 +162,12 @@ function negativeChange(n1, n2) {
 }
 
 function restartGame() {
+    checkedWordList = []
     tableRepresentation = []
     tableSolution = []
     winningCount = 0
     tableContainer.append(createTable())
+    pastSeconds = 0
     choseWord()
     horizonWordPlacement()
     attTableRepresentation()
@@ -178,6 +180,7 @@ function restartGame() {
 
     attWordList()
     addEventListenerCreator()
+    startTimer()
 }
 
 function dealWithCount(word) {

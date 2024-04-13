@@ -56,7 +56,7 @@ function attTable() {
             let tableValue = tableRepresentation[idRow][idColumn]
 
             if (tableSolution[idRow][idColumn] === tableValue) { // if usado para debbug (deixa todas as palavras destacadas)
-                cellElement.style.background = 'blue'
+                //cellElement.style.background = 'blue'
             }
             cellElement.textContent = tableValue 
             idColumn++       
