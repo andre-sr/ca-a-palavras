@@ -10,7 +10,7 @@ body {
 
 header {
     font-size: 2em;
-    padding: 1em;
+    padding: 0.2em 0 1em 0 ; 
 }
 
 main {
@@ -46,7 +46,28 @@ main {
     background-color: rgba(255, 255, 255, 0.377);
 }
 
+.record-list-container {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+}
+
+.record-list-container h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.record-list-container ol {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+
 .table-container {
+    margin-top: 1em;
     padding: 0 2em;
 }
 

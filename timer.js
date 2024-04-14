@@ -51,16 +51,18 @@ function createRecord(pastSeconds, formatedTime) {
 
 function recordListCreator() {
     recordListElement.innerHTML = ''
-    for (let i = 0; i <= recordList.length; i++) {
+    for (let i = 0; i < recordList.length; i++) {
         let element = document.createElement('li')
         element.textContent = recordList[i].formatedRec
-        recordListElement.append(element)
+        recordListElement.append(element)        
     }
+   
+    
 }
 
 function toLocalStorage() {
     localStorage.setItem('recordList', JSON.stringify(recordList))
 }
 
-
+recordListCreator()
 //EVENTOS

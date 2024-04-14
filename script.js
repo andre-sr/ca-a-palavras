@@ -3,8 +3,8 @@ const tableContainer = document.querySelector('#table-container')
 const btnStart = document.querySelector('#start')
 const ulElement = document.querySelector('.word-list')
 
-let tableSizeRow = 18;
-let tableSizeColumn = 18;
+let tableSizeRow = 17;
+let tableSizeColumn = 17;
 let tableRepresentation = [];
 let tableSolution = [];
 
@@ -78,7 +78,7 @@ function attTableRepresentation() {
             let cellElement = document.querySelector(`#r${idRow}-c${idColumn}`)
 
             if (tableSolutionValue !== '0') {
-                //cellElement.style.background = 'green'
+                cellElement.style.background = 'green'
                 tableRepresentation[idRow][idColumn] = tableSolutionValue
             } else {
                 tableRepresentation[idRow][idColumn] =  `${getRandomLetter()}`
@@ -182,11 +182,11 @@ function diagonal1WordPlacement () {
     for (let x = 8; x < 12; x++) {
         var test = false
         const chosedWordString = chosedWordList[x]
-
+        let diceRolls = 0
         while (test === false) {
             let rowN = Math.floor(Math.random() * tableRepresentation.length)
             let columnN = Math.floor(Math.random() * tableRepresentation[rowN].length)
-            let diceRolls = 0
+            
             if (tableRepresentation.length - rowN >= chosedWordString.length) {
                 test = true
                 let trueFalse = true
@@ -215,9 +215,11 @@ function diagonal1WordPlacement () {
                     }
                 }
                 diceRolls = diceRolls + 1
-                if (diceRolls >= 50) {
-                    restartGame()
+                //console.log(diceRolls)
+                if (diceRolls > 999) {
+                    return 'kct'
                 }
+                console.log('fudeu2')
             }
         }  
     }
